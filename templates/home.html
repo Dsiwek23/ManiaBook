@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style_home.css') }}">
 </head>
 <body>
-    <!-- Pasek kategorii -->
+   
     <div>
         <ul>
             {% for category in categories %}
@@ -43,7 +43,7 @@
         {% endif %}
     </div>
     <div>
-        <!-- Bibioteka z książkami -->
+       
         {% for book in books %}
             <div>
                 <h3>{{ book.title }}</h3>
