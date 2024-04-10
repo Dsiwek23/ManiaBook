@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h2>Admin Panel</h2>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_admin_panel.css') }}">
+    <p>Hello, administrator!</p>
+    <a href="{{ url_for('admin_logout') }}">Logout</a>
+
+    <h3>Delete Book:</h3>
+    <form action="{{ url_for('admin_delete_book') }}" method="post">
+        <label for="book_title">Book title to be removed:</label><br>
+        <input type="text" id="book_title" name="book_title" required><br>
+        <input type="submit" value="Delete">
+    </form>
+
+    <h3>Manage users:</h3>
+    <form action="{{ url_for('manage_user') }}" method="post">
+        <label for="username">User Name:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="action">Action:</label><br>
+        <select id="action" name="action" required>
+            <option value="delete">Delete account</option>
+        </select><br>
+        <input type="submit" value="Delete">
+    </form>
+
+    <h3>Edit book:</h3>
+    <form action="{{ url_for('admin_edit_book') }}" method="get">
+        <label for="book_title_edit">Book title to be edited:</label><br>
+        <input type="text" id="book_title_edit" name="book_title_edit" required value="{{ request.args.get('search', '') }}" list="titles"><br>
+        <datalist id="titles">
+            {% for title in titles %}
+                <option>{{ title }}</option>
+            {% endfor %}
+        </datalist>
+        <input type="submit" value="Edit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category_name }} Category</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_category.css') }}">
+</head>
+<body>
+    <h2>{{ category_name }}</h2>
+
+    <div>
+        {% for book in category_books %}
+            <div>
+                <h3>{{ book.title }}</h3>
+                <p>Autor: {{ book.author }}</p>
+                <p>Price: {{ book.price }}</p>
+                <p>Category: {{ book.category }}</p>
+                <p>Description: {{ book.description }}</p>
+                <p>Publication date: {{ book.year }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('home') }}" class="return-button">home page</a>
+</body>
+</html>

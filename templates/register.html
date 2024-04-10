@@ -1,0 +1,55 @@
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_register.css') }}">
+</head>
+<body>
+    <h2>Register</h2>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="post" action="{{ url_for('register') }}">
+        <label for="first_name">Name:</label>
+        <input type="text" name="first_name" required>
+        <br>
+        <label for="last_name">Surname:</label>
+        <input type="text" name="last_name" required>
+        <br>
+        <label for="username">User Name:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <label for="confirm_password">Repeat password:</label>
+        <input type="password" name="confirm_password" required>
+        <br>
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" required>
+        <br>
+        <label for="phone_number">Phone number:</label>
+        <input type="tel" name="phone_number" required>
+        <br>
+        <label for="birth_date">Date of birth:</label>
+        <input type="date" name="birth_date" required>
+        <br>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

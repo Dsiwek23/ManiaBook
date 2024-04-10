@@ -1,0 +1,26 @@
+<!-- books_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+    <!-- Dodaj ewentualne style -->
+</head>
+<body>
+    <h2>Book List</h2>
+    <ul>
+        {% for book in books %}
+            <li>
+                {{ book.title }} -
+                <form method="post" action="{{ url_for('delete_book', title=book['title']) }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Dodaj przycisk powrotu -->
+    <a href="{{ url_for('home') }}">Back to main page</a>
+</body>
+</html>
