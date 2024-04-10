@@ -1,0 +1,32 @@
+/* Add your styling for the category page here */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 20px;
+}
+
+h2 {
+    color: #009688;
+}
+
+div {
+    margin-top: 20px;
+}
+
+div > div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.return-button {
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #009688;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+}
