@@ -57,7 +57,6 @@ class User(db.Model):
     birth_date = db.Column(db.Date, nullable=True)
 
 
-
 users = {"admin": {"password": bcrypt.generate_password_hash("admin_password").decode('utf-8')}}
 
 
@@ -88,11 +87,11 @@ def login():
             session['user_id'] = user.id
             session['username'] = user.username
 
-            flash('Zalogowano pomyślnie.', 'success')
+            flash('You have logged in successfully.', 'success')
             return redirect(url_for('home'))
 
         else:
-            flash('Błędna nazwa użytkownika lub hasło.', 'danger')
+            flash('Incorrect username or password.', 'danger')
 
     return render_template('login.html')
 
@@ -110,21 +109,21 @@ def register():
 
         existing_username = User.query.filter_by(username=username).first()
         if existing_username:
-            flash('Nazwa użytkownika jest już zajęta.', 'danger')
+            flash('The username is already taken.', 'danger')
             return redirect(url_for('register'))
 
         existing_email = User.query.filter_by(email=email).first()
         if existing_email:
-            flash('Adres email jest już używany.', 'danger')
+            flash('The email address is already in use.', 'danger')
             return redirect(url_for('register'))
 
         existing_phone_number = User.query.filter_by(phone_number=phone_number).first()
         if existing_phone_number:
-            flash('Numer telefonu jest już używany.', 'danger')
+            flash('The phone number is already in use.', 'danger')
             return redirect(url_for('register'))
 
         if len(password) < 6 or not any(char.isdigit() for char in password) or not any(char.isalpha() for char in password) or not any(char.isalnum() for char in password):
-            flash('Hasło musi mieć co najmniej 6 znaków i zawierać co najmniej jedną cyfrę, literę oraz znak specjalny.', 'danger')
+            flash('The password must be at least 6 characters long and contain at least one number, letter and special character.', 'danger')
             return redirect(url_for('register'))
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
         new_user = User(
@@ -139,11 +138,11 @@ def register():
         try:
             db.session.add(new_user)
             db.session.commit()
-            flash('Rejestracja zakończona sukcesem! Możesz się teraz zalogować.', 'success')
+            flash('Registration completed successfully! You can log in now.', 'success')
             return redirect(url_for('login'))
         except IntegrityError:
             db.session.rollback()
-            flash('Wystąpił błąd podczas rejestracji. Spróbuj ponownie.', 'danger')
+            flash('An error occurred during registration. try again.', 'danger')
 
     return render_template('register.html')
 
@@ -201,10 +200,10 @@ def admin_edit_book():
             if book:
                 return redirect(url_for('edit_book', title=book.title))
             else:
-                flash('Nie znaleziono książki o podanym tytule.', 'danger')
+                flash('No book with the given title was found.', 'danger')
                 return redirect(url_for('admin_panel'))
         else:
-            flash('Nie podano tytułu książki do edycji.', 'danger')
+            flash('No title of the book to be edited was given.', 'danger')
             return redirect(url_for('admin_panel'))
 
 
@@ -217,10 +216,8 @@ def manage_user():
     action = request.form.get('action')
 
     if action == 'ban':
-        # Tutaj dodaj logikę banowania użytkownika
         return redirect(url_for('admin_panel'))
     elif action == 'delete':
-        # Tutaj dodaj logikę usuwania konta użytkownika
         return redirect(url_for('admin_panel'))
     else:
         return "Nieprawidłowa akcja"
@@ -340,6 +337,7 @@ def add_book():
         return redirect(url_for('home'))
     return render_template('add_book.html')
 
+
 @app.route('/buy_message')
 def buy_message():
     return render_template('buy_message.html')
@@ -380,17 +378,15 @@ def buy_book(book_id):
     book = Book.query.get_or_404(book_id)
     return render_template('buy_book.html', book=book)
 
-#todo
-
 
 @app.route('/delete_book/<title>', methods=['POST'])
 def delete_book(title):
     if not session.get('logged_in'):
-        flash('Musisz być zalogowany, aby usunąć książkę.', 'danger')
+        flash('You must be logged in to delete a book.', 'danger')
         return redirect(url_for('login'))
 
     delete_book_from_db(title)
-    flash(f'Książka "{title}" została usunięta.', 'success')
+    flash(f'Book "{title}" has been deleted.', 'success')
     return redirect(url_for('books_list'))
 
 
