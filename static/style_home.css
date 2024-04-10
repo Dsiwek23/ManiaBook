@@ -6,7 +6,7 @@ body {
     align-items: center;
 }
 
-/* Pasek kategorii */
+
 ul {
     list-style: none;
     padding: 0;
@@ -21,7 +21,6 @@ ul li {
     margin-right: 10px;
 }
 
-/* Zdjęcie i przycisk "Dodaj książkę" */
 img {
     width: 50px;
     height: 50px;
@@ -33,7 +32,6 @@ a {
     color: #333;
 }
 
-/* Pasek wyszukiwania */
 form {
     display: flex;
     align-items: center;
@@ -55,12 +53,12 @@ button {
     border-radius: 4px;
 }
 
-/* Przyciski "Zaloguj się" lub "Wyloguj się" */
+
 a[href="#logout"] {
     color: #FF0000;
 }
 
-/* Biblioteka z książkami */
+
 div > div {
     border: 1px solid #ddd;
     padding: 10px;
@@ -71,12 +69,12 @@ h3 {
     margin-top: 0;
 }
 
-/* Układ informacji o książce */
+
 div > div > p {
     margin: 5px 0;
 }
 
-/* Umieszczenie przycisków po prawej stronie */
+
 div:nth-child(2) {
     display: flex;
     justify-content: space-between;
@@ -84,7 +82,7 @@ div:nth-child(2) {
     width: 100%;
 }
 
-/* Przycisk "Buy" */
+
 a[href^="{{ url_for('buy_book') }}"] {
     background-color: #4285f4;
     color: #fff;
