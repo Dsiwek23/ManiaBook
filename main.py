@@ -70,7 +70,7 @@ def home():
     return render_template('home.html', categories=categories, books=filtered_books, titles=titles, session=session)
 
 
-@app.route('/login', methods=['GET', 'POST'])  # Logowanie
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
@@ -174,7 +174,6 @@ def admin_panel():
 
 @app.route('/admin/logout')
 def admin_logout():
-    # Czyszczenie sesji dla administratora
     session.pop('admin_logged_in', None)
     return redirect(url_for('home'))
 
