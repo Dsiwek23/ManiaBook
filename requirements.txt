@@ -1,0 +1,4 @@
+flask~=3.0.2
+flask_bcrypt
+PyMySQL~=1.1.0
+SQLAlchemy~=2.0.27
