@@ -1,4 +1,3 @@
-# functions/registration_functions.py
 from flask import request, redirect, url_for, render_template, session, flash
 from flask_bcrypt import Bcrypt
 
