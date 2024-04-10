@@ -1,4 +1,4 @@
-/* style_login.css */
+
 
 body {
     font-family: 'Arial', sans-serif;
@@ -14,7 +14,7 @@ body {
 h2 {
     text-align: center;
     color: #333;
-    margin-top: 20px; /* Zwiększ odstęp od góry */
+    margin-top: 20px; 
 }
 
 form {
@@ -23,9 +23,9 @@ form {
     padding-right: 50px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px; /* Zwiększ szerokość formularza */
-    margin-top: 20px; /* Dodaj margines na górę formularza */
-    margin-right: 20px; /* Dodaj margines po prawej stronie formularza */
+    width: 400px;
+    margin-top: 20px;
+    margin-right: 20px; 
 }
 
 label {
