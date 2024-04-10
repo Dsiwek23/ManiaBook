@@ -149,10 +149,6 @@ def register():
 
 @app.route('/logout')
 def logout():
-    if session.get('logged_in'):
-        flash('You have been logged out as a user.', 'success')
-    elif session.get('admin_logged_in'):
-        flash('You have been logged out as an administrator.', 'success')
 
     session.pop('logged_in', None)
     session.pop('admin_logged_in', None)

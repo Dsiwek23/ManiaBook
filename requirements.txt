@@ -1,4 +1,9 @@
 flask~=3.0.2
-flask_bcrypt
+flask_bcrypt~=1.0.1
 PyMySQL~=1.1.0
-SQLAlchemy~=2.0.27
+SQLAlchemy~=2.0.29
+Flask-SQLAlchemy~=3.1.1
+Flask-Migrate~=4.0.7
+Flask-MySQLdb~=2.0.0
+
+
