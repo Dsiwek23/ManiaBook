@@ -33,7 +33,7 @@ class Book(db.Model):
 
 class Purchase(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=True)  # Allow book_id to be nullable
+    book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=True) 
     book = db.relationship('Book', backref=db.backref('purchases', lazy=True))
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
@@ -45,7 +45,7 @@ class Purchase(db.Model):
     purchase_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 
-# Model dla tabeli User
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
@@ -57,7 +57,7 @@ class User(db.Model):
     birth_date = db.Column(db.Date, nullable=True)
 
 
-# Przykładowe dane użytkowników (dane tymczasowe)
+
 users = {"admin": {"password": bcrypt.generate_password_hash("admin_password").decode('utf-8')}}
 
 
@@ -375,7 +375,6 @@ def buy_book(book_id):
         db.session.delete(book)
         db.session.commit()
 
-        # flash(f'Dziękujemy za zakup książki przez użytkownika {first_name} {last_name}!', 'success')
         return redirect(url_for('buy_message'))
 
     book = Book.query.get_or_404(book_id)
